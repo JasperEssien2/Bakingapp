@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Fragments.RecipeStepsDetailFragment">
+
+    <FrameLayout
+        android:id="@+id/fragment_recipe_steps_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBackground">
+
+        <!--<ScrollView-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:id="@+id/recipe_steps_media_play_video"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorMediaFrame"
+                android:visibility="visible">
+
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/video_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </com.google.android.exoplayer2.ui.PlayerView>
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/recipe_steps_media_play"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:scaleType="centerCrop"
+                android:visibility="gone">
+
+            </ImageView>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e0e0e0"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/recipe_steps_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/recipe_label_steps"
+                    android:textSize="20sp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/recipe_label_steps_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                tools:text="Heey Step 1- Be a fool,\nStep 2: Be a Coooow!!!" />
+        </LinearLayout>
+        <!--</ScrollView>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/recipe_steps_detail_previous_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/button_previous"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/recipe_steps_detail_next_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/button_next"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>
