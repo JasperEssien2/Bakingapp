@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.RecipeDetailActivity" />
+        <activity
+            android:name=".Activities.RecipeDetailActivity"
+            android:parentActivityName=".Activities.HomeActivity" />
 
         <receiver android:name=".BakingAppWidgetProvider">
             <intent-filter>

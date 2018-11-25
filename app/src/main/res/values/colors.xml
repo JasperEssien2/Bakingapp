@@ -14,9 +14,14 @@
     <color name="colorCyan_400">#26c6da</color>
     <color name="colorCyan_900">#006064</color>
 
-    <color name="colorLightGreen_400">#9ccc65</color>
-    <color name="colorLightGreen_900">#33691e</color>
+    <color name="colorLightGreen_400">#26c6da</color>
+    <color name="colorLightGreen_900">#006064</color>
 
-    <color name="colorGreen_400">#66bb6a</color>
-    <color name="colorGreen_900">#1b5e20</color>
+    <color name="colorGreen_400">#26c6da</color>
+    <color name="colorGreen_900">#006064</color>
+    <!--<color name="colorLightGreen_400">#9ccc65</color>-->
+    <!--<color name="colorLightGreen_900">#33691e</color>-->
+
+    <!--<color name="colorGreen_400">#66bb6a</color>-->
+    <!--<color name="colorGreen_900">#1b5e20</color>-->
 </resources>

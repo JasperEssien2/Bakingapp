@@ -27,8 +27,9 @@
         <!--TODO: This takes a drawable as the background that contains the number of step or ingredients icon-->
         <ImageView
             android:id="@+id/item_recipe_steps_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_right_arrow_recipe"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"

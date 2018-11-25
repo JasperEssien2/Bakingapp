@@ -22,4 +22,5 @@
     <string name="label_measure">"Measure: "</string>
     <string name="appwidget_text">RECIPE</string>
     <string name="add_widget">Add widget</string>
+    <string name="no_item_selected_tablet_text">Click on a step to view details</string>
 </resources>

@@ -71,7 +71,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
                 animationDrawable.stop();
                 Intent intent = new Intent(activity, RecipeDetailActivity.class);
                 intent.putExtra(BundleConstants.RECIPE_LIST_FRAGMENT_STEPS,
-                        (RecipeJson) recipeJsonList.
+                        recipeJsonList.
                                 get(holder.getAdapterPosition()));
                 activity.startActivity(intent);
             }
@@ -231,12 +231,12 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
             RecipeStepsDetailFragment fragment = RecipeStepsDetailFragment.newInstance(getBundle(steps, pos));
             fragment.setRetainInstance(true);
             if (isTabletLayoutUsed()) {
+                hideNoClickItemEmptyView();
                 ((AppCompatActivity) activity).getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.recipe_detail_fragments_container_right, fragment, BundleConstants.RECIPE_STEPS_DETAIL)
                         .commit();
             } else {
-                Log.e(TAG, "Call to open DEtail fragment made --- ");
                 RecipeStepsDetailFragment frag = (RecipeStepsDetailFragment) ((AppCompatActivity) activity).getSupportFragmentManager()
                         .findFragmentByTag(BundleConstants.RECIPE_STEPS_DETAIL);
                 ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction()
@@ -249,27 +249,6 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
                     frag.onDestroy();
                 }
 
-//                RecipeStepsDetailFragment frag = (RecipeStepsDetailFragment) ((AppCompatActivity) activity).getSupportFragmentManager()
-//                        .findFragmentByTag(BundleConstants.RECIPE_STEPS_DETAIL);
-//                if (frag != null) {
-//                    frag.onStop();
-//                    frag.onDestroy(); //To release player
-//                    try {
-//                        ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction()
-//                                .add(R.id.fragment_recipe_steps_detail, fragment, BundleConstants.RECIPE_STEPS_DETAIL)
-//                                .commit();
-//
-//                    }catch (IllegalStateException e){}
-//                } else {
-//                    //Only add the first item the user clicks to backStack so that even when the user
-//                    //has clicked on Previous or Next button multiple times, pressing back button goes back
-//                    //to the list of instructions
-//                    ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction()
-//                            .addToBackStack(BundleConstants.RECIPE_STEPS_DETAIL)
-//                            .add(R.id.fragment_recipe_list, fragment, BundleConstants.RECIPE_STEPS_DETAIL)
-//                            .commit();
-//                }
-                //fragmentTransaction.commit();
             }
         }
 
@@ -279,9 +258,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
          * @return true if tablet resource used else false
          */
         boolean isTabletLayoutUsed() {
-            if (activity.findViewById(R.id.recipe_detail_fragments_container_right) == null) {
-                return false;
-            } else return true;
+            return activity.findViewById(R.id.recipe_detail_fragments_container_right) != null;
         }
 
         /**
@@ -329,6 +306,24 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
         public void setList(List<RecipeJson.Steps> list) {
             this.stepsList = list;
             notifyDataSetChanged();
+        }
+
+        /**
+         * This method hides the view telling the user to click on an item to see steps detail
+         * when in tablet devices
+         */
+        private void hideNoClickItemEmptyView() {
+            ((RecipeDetailActivity) activity).getDetailActivityBinding()
+                    .fragmentRecipeStepsNotClickedView.setVisibility(View.GONE);
+        }
+
+        /**
+         * This method shows the view telling the user to click on an item to see steps detail
+         * when in tablet devices
+         */
+        private void showNoClickItemEmptyView() {
+            ((RecipeDetailActivity) activity).getDetailActivityBinding()
+                    .fragmentRecipeStepsNotClickedView.setVisibility(View.VISIBLE);
         }
 
 //        /**

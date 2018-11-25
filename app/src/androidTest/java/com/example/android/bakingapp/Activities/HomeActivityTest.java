@@ -14,6 +14,7 @@ import com.example.android.bakingapp.R;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -71,35 +72,37 @@ public class HomeActivityTest {
                         isDisplayed()));
         textView.check(matches(withText("Recipe Introduction")));
 
+        ViewInteraction viewGroup = onView(
+                allOf(childAtPosition(
+                        allOf(withId(R.id.recipe_card_list_recycler_view),
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        1)),
+                        0),
+                        isDisplayed()));
+        viewGroup.check(matches(isDisplayed()));
+
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.item_recipe_steps_text), withText("Recipe Introduction"),
+                allOf(withId(R.id.appwidget_list_item), withText("Graham Cracker crumbs"),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.recipe_card_list_recycler_view),
-                                        0),
-                                0),
-                        isDisplayed()));
-        textView2.check(matches(isDisplayed()));
-
-        ViewInteraction recyclerView2 = onView(
-                allOf(withId(R.id.recipe_card_list_recycler_view),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment_recipe_list),
-                                        0),
+                                allOf(withId(R.id.appwidget_frame_layout),
+                                        childAtPosition(
+                                                withId(R.id.recipe_ingredients_list_recycler_view),
+                                                0)),
                                 1),
                         isDisplayed()));
-        recyclerView2.check(matches(isDisplayed()));
+        textView2.check(matches(withText("Graham Cracker crumbs")));
 
-        ViewInteraction imageButton = onView(
-                allOf(withId(R.id.recipe_detail_add_to_widget_database),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        imageButton.check(matches(isDisplayed()));
+//        ViewInteraction imageButton = onView(
+//                allOf(withContentDescription("Navigate up"),
+//                        childAtPosition(
+//                                allOf(withId(R.id.action_bar),
+//                                        childAtPosition(
+//                                                withId(R.id.action_bar_container),
+//                                                0)),
+//                                0),
+//                        isDisplayed()));
+//        imageButton.check(matches(isDisplayed()));
 
         ViewInteraction imageButton2 = onView(
                 allOf(withId(R.id.recipe_detail_add_to_widget_database),
@@ -110,6 +113,16 @@ public class HomeActivityTest {
                                 1),
                         isDisplayed()));
         imageButton2.check(matches(isDisplayed()));
+
+        ViewInteraction imageButton3 = onView(
+                allOf(withId(R.id.recipe_detail_add_to_widget_database),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        imageButton3.check(matches(isDisplayed()));
 
     }
 

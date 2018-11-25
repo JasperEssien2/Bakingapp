@@ -56,6 +56,15 @@ public class RecipeDetailActivity extends AppCompatActivity {
     }
 
     /**
+     * Returns the databinding of this activty
+     *
+     * @return
+     */
+    public ActivityRecipeDetailBinding getDetailActivityBinding() {
+        return recipeDetailBinding;
+    }
+
+    /**
      * This method gets list of steps passed to the activity through intent
      *
      * @return List<RecipeJson.Steps>
